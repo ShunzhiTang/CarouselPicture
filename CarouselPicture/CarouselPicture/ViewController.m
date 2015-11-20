@@ -8,12 +8,13 @@
   //定义图片的数量
 static NSUInteger imageCount =  6;
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
 
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 
+@property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
 @end
 
@@ -22,6 +23,7 @@ static NSUInteger imageCount =  6;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.scrollerView.delegate  = self;
     //
     [self setupImageView];
 }
@@ -47,7 +49,7 @@ static NSUInteger imageCount =  6;
         [self.scrollerView addSubview:imageView];
     }
     
-    // 一定要设置 UIScrollView
+    //一定要设置 UIScrollView
     self.scrollerView.contentSize = CGSizeMake(imageCount * imageW, 0);
     
     //隐藏滚动条
@@ -58,9 +60,21 @@ static NSUInteger imageCount =  6;
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//滚动就会调用
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    //根据scroller 的offset 属性计算页数
+    CGPoint offset = scrollView.contentOffset;
+    
+    CGFloat scrollerW = scrollView.frame.size.width;
+    
+    int page = (offset.x  +  scrollerW * 0.5) / scrollerW;
+    
+    self.pageController.currentPage = page;
+    
+    
 }
+
 
 @end

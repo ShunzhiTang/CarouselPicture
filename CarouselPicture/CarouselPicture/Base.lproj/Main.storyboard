@@ -7,6 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -22,20 +23,38 @@
                                     <constraint firstAttribute="height" constant="130" id="Btg-J1-fCR"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="bJw-ZB-InK">
+                                <rect key="frame" x="0.0" y="130" width="600" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="W1x-LH-W6d"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.91372555489999996" green="0.99215692280000001" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bJw-ZB-InK" secondAttribute="trailing" id="4nk-sV-ILQ"/>
+                            <constraint firstItem="bJw-ZB-InK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="130" id="GaJ-j0-Yr0"/>
+                            <constraint firstItem="bJw-ZB-InK" firstAttribute="top" secondItem="neq-RE-0FK" secondAttribute="bottom" constant="110" id="O0Q-mB-PwB"/>
                             <constraint firstAttribute="trailing" secondItem="neq-RE-0FK" secondAttribute="trailing" id="RPM-Qd-XQn"/>
+                            <constraint firstItem="bJw-ZB-InK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gIl-4c-kqB"/>
                             <constraint firstItem="neq-RE-0FK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gtI-wm-XUN"/>
                             <constraint firstItem="neq-RE-0FK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hIq-Oa-hnd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="O0Q-mB-PwB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="pageController" destination="bJw-ZB-InK" id="YYg-lc-2nj"/>
                         <outlet property="scrollerView" destination="neq-RE-0FK" id="ynW-yi-ryi"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="224" y="209"/>
         </scene>
     </scenes>
 </document>
