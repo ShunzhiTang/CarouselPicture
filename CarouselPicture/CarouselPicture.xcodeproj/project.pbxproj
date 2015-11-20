@@ -13,6 +13,12 @@
 		2417EDFB1BFF1E7D0005A181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2417EDF91BFF1E7D0005A181 /* Main.storyboard */; };
 		2417EDFD1BFF1E7D0005A181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2417EDFC1BFF1E7D0005A181 /* Assets.xcassets */; };
 		2417EE001BFF1E7D0005A181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2417EDFE1BFF1E7D0005A181 /* LaunchScreen.storyboard */; };
+		24AFC2241BFFC04B00D55ECD /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC21E1BFFC04B00D55ECD /* 0.jpg */; settings = {ASSET_TAGS = (); }; };
+		24AFC2251BFFC04B00D55ECD /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC21F1BFFC04B00D55ECD /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
+		24AFC2261BFFC04B00D55ECD /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC2201BFFC04B00D55ECD /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
+		24AFC2271BFFC04B00D55ECD /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC2211BFFC04B00D55ECD /* 3.jpg */; settings = {ASSET_TAGS = (); }; };
+		24AFC2281BFFC04B00D55ECD /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC2221BFFC04B00D55ECD /* 4.jpg */; settings = {ASSET_TAGS = (); }; };
+		24AFC2291BFFC04B00D55ECD /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24AFC2231BFFC04B00D55ECD /* 5.jpg */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		2417EDFC1BFF1E7D0005A181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2417EDFF1BFF1E7D0005A181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2417EE011BFF1E7D0005A181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24AFC21E1BFFC04B00D55ECD /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
+		24AFC21F1BFFC04B00D55ECD /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		24AFC2201BFFC04B00D55ECD /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		24AFC2211BFFC04B00D55ECD /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		24AFC2221BFFC04B00D55ECD /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		24AFC2231BFFC04B00D55ECD /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		2417EDEF1BFF1E7D0005A181 /* CarouselPicture */ = {
 			isa = PBXGroup;
 			children = (
+				24AFC21D1BFFC03900D55ECD /* Image */,
 				2417EDF31BFF1E7D0005A181 /* AppDelegate.h */,
 				2417EDF41BFF1E7D0005A181 /* AppDelegate.m */,
 				2417EDF61BFF1E7D0005A181 /* ViewController.h */,
@@ -77,6 +90,19 @@
 				2417EDF11BFF1E7D0005A181 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24AFC21D1BFFC03900D55ECD /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				24AFC21E1BFFC04B00D55ECD /* 0.jpg */,
+				24AFC21F1BFFC04B00D55ECD /* 1.jpg */,
+				24AFC2201BFFC04B00D55ECD /* 2.jpg */,
+				24AFC2211BFFC04B00D55ECD /* 3.jpg */,
+				24AFC2221BFFC04B00D55ECD /* 4.jpg */,
+				24AFC2231BFFC04B00D55ECD /* 5.jpg */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +163,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AFC2281BFFC04B00D55ECD /* 4.jpg in Resources */,
+				24AFC2261BFFC04B00D55ECD /* 2.jpg in Resources */,
+				24AFC2241BFFC04B00D55ECD /* 0.jpg in Resources */,
+				24AFC2291BFFC04B00D55ECD /* 5.jpg in Resources */,
 				2417EE001BFF1E7D0005A181 /* LaunchScreen.storyboard in Resources */,
 				2417EDFD1BFF1E7D0005A181 /* Assets.xcassets in Resources */,
 				2417EDFB1BFF1E7D0005A181 /* Main.storyboard in Resources */,
+				24AFC2271BFFC04B00D55ECD /* 3.jpg in Resources */,
+				24AFC2251BFFC04B00D55ECD /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +333,7 @@
 				2417EE061BFF1E7D0005A181 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,14 +1,19 @@
-//
 //  ViewController.m
 //  CarouselPicture
-//
 //  Created by Tsz on 15/11/20.
 //  Copyright © 2015年 Tsz. All rights reserved.
-//
 
 #import "ViewController.h"
 
+  //定义图片的数量
+static NSUInteger imageCount =  6;
+
 @interface ViewController ()
+
+
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
+
 
 @end
 
@@ -16,7 +21,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //
+    [self setupImageView];
+}
+
+//加载的时间传入图片「」
+
+- (void)setupImageView{
+    
+    //计算图片的frame
+    CGFloat imageW = self.view.frame.size.width;
+    CGFloat imageH = 130;
+    
+    CGFloat imageY = 0;
+    for ( int i = 0; i < imageCount; i++) {
+        //创建 imageView
+       UIImageView *imageView =  [[UIImageView alloc] init];
+        
+        NSString *imageName = [NSString stringWithFormat:@"%d.jpg" , i];
+        imageView.image = [UIImage imageNamed:imageName];
+        CGFloat  imageX = i * imageW;
+        
+        imageView.frame = CGRectMake(imageX , imageY, imageW, imageH) ;
+        [self.scrollerView addSubview:imageView];
+    }
+    
+    // 一定要设置 UIScrollView
+    self.scrollerView.contentSize = CGSizeMake(imageCount * imageW, 0);
+    
+    //隐藏滚动条
+    self.scrollerView.showsHorizontalScrollIndicator = NO;
+    
+    //分页
+    self.scrollerView.pagingEnabled = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
