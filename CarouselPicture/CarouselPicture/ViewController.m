@@ -4,6 +4,7 @@
 //  Copyright © 2015年 Tsz. All rights reserved.
 
 #import "ViewController.h"
+#import "AdvertisementBanner_3D.h"
 
   //定义图片的数量
 static NSUInteger imageCount =  6;
@@ -11,7 +12,11 @@ static NSUInteger imageCount =  6;
 //ID
 static NSString * const ID = @"cell";
 
-@interface ViewController () <UIScrollViewDelegate , UITableViewDataSource , UITableViewDelegate>
+@interface ViewController () <UIScrollViewDelegate , UITableViewDataSource , UITableViewDelegate ,ClickImgDelegate>
+{
+    UIImageView *_imageView;
+    int _currentIndex;
+}
 
 @property (nonatomic ,strong)NSTimer *timer;
 
@@ -40,11 +45,11 @@ static NSString * const ID = @"cell";
     NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(addCurrentTimer) object:nil];
     
     [thread start];
-    
-   
-
     //显示 图片
     [self setupImageView];
+    
+    //显示3D
+    [self set3DAdvertisement];
 }
 
 //加载的时间传入图片「」
@@ -77,6 +82,20 @@ static NSString * const ID = @"cell";
     self.scrollerView.pagingEnabled = YES;
 }
 
+
+#pragma mark: 实现3D的广告
+- (void)set3DAdvertisement{
+     AdvertisementBanner_3D *Banner_View = [[AdvertisementBanner_3D alloc]initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 180)];
+    
+    Banner_View.delegate = self;
+    [Banner_View show3DBannerView];
+    [self.view addSubview:Banner_View];
+}
+
+//点击了第几张图片
+- (void)ClickImg:(int)index{
+    NSLog(@"点击了第%d张",index);
+}
 
 #pragma mark: UIScrollViewDelegate 代理方法
 
@@ -134,7 +153,7 @@ static NSString * const ID = @"cell";
 - (void)addCurrentTimer{
     //添加定时器
     self.timer  = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
-     NSLog(@"%@" , [NSThread currentThread]);
+
     
     //加入主运行循环
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
