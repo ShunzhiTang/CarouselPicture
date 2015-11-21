@@ -8,8 +8,14 @@
   //定义图片的数量
 static NSUInteger imageCount =  6;
 
-@interface ViewController () <UIScrollViewDelegate>
+//ID
+static NSString * const ID = @"cell";
 
+@interface ViewController () <UIScrollViewDelegate , UITableViewDataSource , UITableViewDelegate>
+
+@property (nonatomic ,strong)NSTimer *timer;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
@@ -24,7 +30,20 @@ static NSUInteger imageCount =  6;
     [super viewDidLoad];
     
     self.scrollerView.delegate  = self;
-    //
+    self.tableView.delegate  = self;
+    self.tableView.dataSource = self;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    
+    //添加定时器s
+    
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(addCurrentTimer) object:nil];
+    
+    [thread start];
+    
+   
+
+    //显示 图片
     [self setupImageView];
 }
 
@@ -54,13 +73,14 @@ static NSUInteger imageCount =  6;
     
     //隐藏滚动条
     self.scrollerView.showsHorizontalScrollIndicator = NO;
-    
     //分页
     self.scrollerView.pagingEnabled = YES;
-    
 }
 
-//滚动就会调用
+
+#pragma mark: UIScrollViewDelegate 代理方法
+
+//滚动就会调用 UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
@@ -73,7 +93,66 @@ static NSUInteger imageCount =  6;
     
     self.pageController.currentPage = page;
     
+}
+
+//开始拖拽注销 定时器
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
+    // 使无效
+    [self.timer invalidate];
+    
+    self.timer = nil;
+}
+
+//当我 拖拽完成后要重新开启这个定时器
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+    [self addCurrentTimer];
+}
+
+
+- (void)nextImage{
+    //当前的page
+    
+    NSInteger page = self.pageController.currentPage;
+    
+    //最后一页
+    if(page == self.pageController.numberOfPages -1){
+        page = 0;
+    }else{
+        page++;
+    }
+    
+    //设置image的位置
+    CGFloat offset = page * self.scrollerView.frame.size.width;
+    
+    //进行滚动
+    [self.scrollerView setContentOffset:CGPointMake(offset, 0) animated:YES];
+}
+
+//添加控制器
+- (void)addCurrentTimer{
+    //添加定时器
+    self.timer  = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+     NSLog(@"%@" , [NSThread currentThread]);
+    
+    //加入主运行循环
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+#pragma mark: 数据源方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return  40;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)   indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    cell.textLabel.text = @"1";
+    
+    return cell;
 }
 
 
